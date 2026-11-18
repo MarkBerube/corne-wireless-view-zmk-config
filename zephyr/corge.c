@@ -94,7 +94,11 @@ _Static_assert(sizeof(corge_map) == 8 + CORGE_STRIDE * CORGE_HEIGHT,
 
 const lv_img_dsc_t __wrap_balloon = {
     .header = {
+#if LVGL_VERSION_MAJOR >= 9
+        .cf = LV_COLOR_FORMAT_I1,
+#else
         .cf = LV_IMG_CF_INDEXED_1BIT,
+#endif
         .w = CORGE_WIDTH,
         .h = CORGE_HEIGHT,
     },
