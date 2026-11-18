@@ -92,16 +92,14 @@ static const uint8_t corge_map[] = {
 _Static_assert(sizeof(corge_map) == 8 + CORGE_STRIDE * CORGE_HEIGHT,
                "Invalid Corge bitmap size");
 
-const lv_image_dsc_t __wrap_balloon = {
+const lv_img_dsc_t __wrap_balloon = {
     .header = {
-        .magic = LV_IMAGE_HEADER_MAGIC,
-        .cf = LV_COLOR_FORMAT_I1,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
         .w = CORGE_WIDTH,
         .h = CORGE_HEIGHT,
-        .stride = CORGE_STRIDE,
     },
     .data_size = sizeof(corge_map),
     .data = corge_map,
 };
 
-extern const lv_image_dsc_t __wrap_mountain __attribute__((alias("__wrap_balloon")));
+extern const lv_img_dsc_t __wrap_mountain __attribute__((alias("__wrap_balloon")));
